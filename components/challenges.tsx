@@ -24,7 +24,7 @@ export async function Challenges() {
             const challenger = entry.properties.Challenger.select.name ?? "Unknown"
             const challenged = entry.properties.Name.title[0]?.plain_text ?? "Unknown"
             const status = entry.properties.Result.status.name;
-            return (<li className="rounded-xl bg-gray-800 p-4 hover:bg-gray-700 transition">
+            return (<li key={challenger} className="rounded-xl bg-gray-800 p-4 hover:bg-gray-700 transition">
             <div className="flex items-center justify-between">
                <h2 className="font-semibold text-white">
                {challenger} vs {challenged}
