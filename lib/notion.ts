@@ -44,6 +44,26 @@ export const getRankings = async (databaseId: string) => {
 };
 
 
+
+export const getChallenges = async (databaseId: string) => {
+  return notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: "Challenger", // fix typo
+      select: {
+        is_not_empty:true,
+      },
+    },
+    sorts: [
+      {
+        property: "Challenge Date",
+        direction: "ascending", // or "descending"
+      },
+    ],
+  });
+};
+
+
 export const getNotionPages = async (databaseId: string) => {
   return notion.databases.query({
     database_id: databaseId,
